@@ -1,0 +1,164 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+$separateLineHeight: 4px;
+@mixin loginLogoutIcon {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 20px;
+  top: 10px;
+  svg {
+    height: 40px;
+    width: 40px;
+    fill: $tertiary;
+  }
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: center;
+  background: $primary;
+  height: 80px;
+  padding: 0 20px;
+  border-bottom: $separateLineHeight solid $secondary;
+  position: relative;
+  @include sm {
+    padding: 0 50px;
+  }
+  @include lg {
+    justify-content: center;
+  }
+}
+
+.navDesktopWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 60px;
+  @include lg {
+    justify-content: center;
+    margin-right: 0;
+  }
+}
+
+.companyLogo {
+  position: absolute;
+  left: 20px;
+  background: white;
+  max-width: 160px !important;
+  max-height: 60px !important;
+  @include sm {
+    left: 50px;
+  }
+}
+
+.navigationWrapper {
+  display: none;
+  height: 100%;
+  padding-top: 10px;
+  @include md {
+    display: flex;
+  }
+}
+
+.navigationElement {
+  color: $tertiary;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.loginIconWrapper {
+  @include loginLogoutIcon;
+  height: calc(100% - (10px - #{$separateLineHeight}));
+  padding: 0 10px calc(10px - #{$separateLineHeight});
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  @include sm {
+    right: 50px;
+  }
+}
+
+.logoutIconWrapper {
+  @include loginLogoutIcon;
+  height: calc(100% - 20px);
+  padding: 0 10px;
+  border-radius: 5px;
+  &:hover {
+    background: $tertiary;
+    svg {
+      fill: $secondary;
+    }
+  }
+}
+
+.loginIconWrapperHovered {
+  background: $tertiary;
+  svg {
+    fill: $primary;
+  }
+}
+
+.activeLink {
+  background: $secondary;
+}
+
+.unActiveLink {
+  &:hover {
+    color: $fontHover;
+  }
+}
+
+// MOBILE
+
+.mobileNavigationIcon {
+  @include center;
+  height: 100%;
+  cursor: pointer;
+  svg {
+    fill: $tertiary;
+    height: 50px;
+    width: 50px;
+  }
+  @include md {
+    display: none;
+  }
+}
+
+.mobileNavigationWrapper {
+  @include center;
+  position: fixed;
+  height: calc(100vh - 80px);
+  background: $modalBackground;
+  width: 100vw;
+  top: 80px;
+}
+
+.mobileNavigation {
+  border-radius: 10px;
+  padding: 20px;
+  background: $primary;
+  box-shadow: $cardShadow;
+  min-width: 300px;
+}
+
+.mobileNavigationElement {
+  @include center;
+  width: 100%;
+  color: $tertiary;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 5px 15px;
+  height: 100%;
+  border-radius: 5px;
+}

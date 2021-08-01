@@ -1,0 +1,30 @@
+@import "styles/colors";
+
+.componentInputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+}
+
+.label {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.textInputWrapper {
+  width: 100%;
+}
+
+.errorMessage {
+  position: absolute;
+  left: 5px;
+  bottom: -20px;
+  color: $errorColor;
+  font-size: 12px;
+  padding-left: 10px;
+  align-items: center;
+  margin-bottom: 2px;
+  margin-right: 10px;
+}

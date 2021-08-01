@@ -1,0 +1,48 @@
+@import "styles/colors";
+
+.loginFrame {
+  cursor: default;
+  background: $tertiary;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  box-shadow: $cardShadowSecondary;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  min-height: 200px;
+  min-width: 400px;
+  top: 66px;
+  padding: 30px;
+  right: 0;
+}
+
+.loginIcon {
+  svg {
+    fill: $tertiary !important;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+
+.registerIcon {
+  svg {
+    fill: $tertiary !important;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+    margin-top: 10px;
+  }
+}
+
+.buttonsWrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.anchor {
+  text-decoration: none;
+}
