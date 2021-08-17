@@ -1,0 +1,1 @@
+export const goldenNumber = 1.6180339887

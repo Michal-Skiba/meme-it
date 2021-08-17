@@ -1,5 +1,5 @@
-import { ButtonBasic, TextInput } from "components/"
-import React, { FormEvent, FormEventHandler, useState } from "react"
+import { ButtonPrimary, TextInput } from "components/"
+import React, { FormEvent, useState } from "react"
 import styles from './loginForm.module.scss'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
@@ -11,12 +11,10 @@ const formErrorsInit = {
 }
 
 interface LoginFormProps {
-  setIsLoginIconHovered: (value: boolean) => void;
   setBlockHideLoginForm: (value: boolean) => void;
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({
-  setIsLoginIconHovered,
   setBlockHideLoginForm
 }) => {
   const [login, setLogin] = useState('')
@@ -41,6 +39,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     const errors = Object.assign({}, formErrorsInit);
     errors.login = validateLogin(login)
     errors.password = validatePassword(password)
+    
     setFormErrors(errors)
     return isErrorInObject(errors)
   }
@@ -55,7 +54,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           errorMessage={formErrors.login}
-          withoutMarginTop
+          marginTop="0"
         />
         <TextInput
           id="password-input"
@@ -68,19 +67,19 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         />
         <div className={styles.buttonsWrapper}>
           <a href="/register" className={styles.anchor}>
-            <ButtonBasic>
+            <ButtonPrimary>
               <div className={styles.registerIcon}>
                 <BorderColorIcon />
               </div>
               Register
-            </ButtonBasic>
+            </ButtonPrimary>
           </a>
-          <ButtonBasic type="submit">
+          <ButtonPrimary type="submit">
             Login
             <div className={styles.loginIcon}>
               <ArrowForwardIcon />
             </div>
-          </ButtonBasic>
+          </ButtonPrimary>
         </div>
       </form>
     </div>

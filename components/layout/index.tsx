@@ -9,14 +9,16 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Meme it</title>
         <meta name="description" content="MEME - IT !" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      {children}
-    </div>
+      <div className={styles.mainContainer} >
+        {children}
+      </div>
+    </>
   )
 };

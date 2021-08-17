@@ -4,7 +4,6 @@ export const Register = () => {
   return (
     <Layout>
       <p>Register</p>
-
     </Layout>
   )
 }

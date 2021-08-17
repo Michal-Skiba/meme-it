@@ -1,0 +1,24 @@
+@import "styles/colors";
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid $tertiary;
+    height: min-content;
+}
+
+.content {
+    color: $tertiary;
+    font-size: 16px;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+.icon {
+    color: $errorColor;
+    cursor: pointer;
+}

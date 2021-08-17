@@ -35,8 +35,11 @@ interface TextInputProps {
   onBlur?: (value: string) => void;
   disabled?: boolean;
   label?: ReactNode;
-  onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>,
+  onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onKeyUp?: React.KeyboardEventHandler<HTMLTextAreaElement | HTMLInputElement>;
   withoutMarginTop?: boolean;
+  marginTop?: string;
+  maxLength?: number;
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -50,19 +53,28 @@ export const TextInput: React.FC<TextInputProps> = ({
   disabled,
   label,
   onFocus,
-  withoutMarginTop,
+  onKeyUp,
+  marginTop = '20px',
+  maxLength,
 }) => {
   return (
-    <div className={styles.componentInputWrapper} style={{ marginTop: withoutMarginTop ? "0" : "20px" }}>
+    <div className={styles.componentInputWrapper} style={{ marginTop }}>
       {label && <label htmlFor={id} className={styles.label}>{label}</label>}
       <FormControl className={styles.textInputWrapper}>
         <StyledTextInput
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (maxLength && maxLength < value.length) {
+              return;
+            }
+            onChange(e.target.value)
+          }}
           id={id}
           name={id}
           onFocus={onFocus}
           placeholder={placeholder}
+          onKeyUp={onKeyUp}
           fullWidth
           disableUnderline
           error={!!errorMessage}

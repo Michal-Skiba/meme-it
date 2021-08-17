@@ -1,0 +1,7 @@
+@import "styles/colors";
+
+.mainContainer {
+    min-height: calc(100vh - 80px);
+    background: $mainBackground;
+    padding: 20px;
+}

@@ -1,4 +1,7 @@
 export { Navigation } from "./navigation";
 export { Layout } from "./layout";
 export { TextInput } from "./inputs";
-export { ButtonBasic } from "./buttons";
+export { ButtonPrimary, ButtonSecondary } from "./buttons";
+export { TooltipComponent } from "./tooltip";
+export { DialogComponent } from "./dialog";
+export { HashTag } from "./hashTag";

@@ -1,26 +1,30 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image'
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';;
 import styles from './navigation.module.scss'
 import logo from 'public/logo.png'
 import { navData } from './navData';
-import { LoginForm } from './loginForm';
-import Tooltip from '@material-ui/core/Tooltip';
+import { TooltipComponent } from 'components/';
+import { LogoutDialog } from './logoutDialog';
+import { AccountBox } from './accountBox';
 
 export const Navigation = () => {
   const [openNav, setOpenNav] = useState(false)
-  const [isLoginIconHovered, setIsLoginIconHovered] = useState(false);
-  const [blockHideLoginForm, setBlockHideLoginForm] = useState(false);
-  const [isUserLogged, setIsUserLogged] = useState(true);
+  const [openLogoutDialog, setOpenLogoutDialog] = useState(false);
+
+  const [isUserLogged, setIsUserLogged] = useState(false);
 
   const router = useRouter();
 
   const toggleNav = () => {
     setOpenNav(!openNav)
+  }
+
+  const handleLogout = () => {
+    setOpenLogoutDialog(false)
   }
 
   return (
@@ -34,34 +38,19 @@ export const Navigation = () => {
             if (navElement.name === 'Login') {
               if (isUserLogged) {
                 return (
-                  <Tooltip title="Logout" placement="bottom">
+                  <TooltipComponent title="Logout" placement="bottom" key={navElement.name}>
                     <div
                       className={styles.logoutIconWrapper}
-                      key={navElement.name}
+                      onClick={() => setOpenLogoutDialog(true)}
                     >
                       <ExitToAppIcon />
                     </div>
-                  </Tooltip>
+                  </TooltipComponent>
                 )
               } else {
                 return (
-                  <div
-                    className={`
-                      ${styles.loginIconWrapper}
-                      ${(isLoginIconHovered || blockHideLoginForm) ? styles.loginIconWrapperHovered : ''}`
-                    }
-                    onMouseEnter={() => setIsLoginIconHovered(true)}
-                    onMouseLeave={() => setIsLoginIconHovered(false)}
-                    key={navElement.name}
-                  >
-                    <a
-                      href={navElement.path}
-                    >
-                      <AccountBoxIcon />
-                    </a>
-                    {(isLoginIconHovered || blockHideLoginForm) &&
-                      <LoginForm setIsLoginIconHovered={setIsLoginIconHovered} setBlockHideLoginForm={setBlockHideLoginForm} />
-                    }
+                  <div key={navElement.name}>
+                    <AccountBox navElement={navElement} />
                   </div>
                 )
               }
@@ -101,6 +90,11 @@ export const Navigation = () => {
           </nav>
         </div>
       }
+      <LogoutDialog
+        setOpenLogoutDialog={setOpenLogoutDialog}
+        handleLogout={handleLogout}
+        openLogoutDialog={openLogoutDialog}
+      />
     </div>
   )
 };

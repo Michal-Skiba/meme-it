@@ -1,0 +1,61 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.container {
+  @include center;
+  height: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: $primary;
+}
+
+.formWrapper {
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  label {
+    color: white;
+  }
+}
+
+.uploadButtonWrapper {
+  margin-top: auto;
+}
+
+.inputsWrapper {
+  width: 600px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.photoWrapper {
+  width: 600px;
+  height: 600px;
+  background: $mainBackground;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: $cardShadow;
+}
+
+.uploadedImage {
+  height: 100%;
+  width: 100%;
+}
+
+.hashContainer {
+  width: 100%;
+  min-height: 200px;
+  background: $mainBackground;
+  border-radius: 15px;
+  box-shadow: $cardShadow;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-content: flex-start;
+  margin-bottom: 25px;
+}
